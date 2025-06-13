@@ -1,0 +1,6 @@
+Flask
+deep-translator
+Pillow
+transformers
+gTTS
+gunicorn

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Descrição de Imagem</title>
+</head>
+<body>
+    <div class="page-box">
+        <div class="form-box">
+           <h1>Faça o Upload de uma Imagem</h1>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="imagem">Escolha uma imagem:</label>
+                <input type="file" name="imagem" id="imagem" accept="image/*" required>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+        {% if descricao %}
+        <div class="section-box">
+            <div class="form-box">
+                <h2>Descrição da Imagem:</h2>
+                <p class="description-box">{{ descricao }}</p>
+            </div>
+            <div class="form-box">
+               <h2>Descrição em áudio:</h2>
+                <audio controls>
+                    <source src="{{ url_for('uploaded_file', filename='descricao.mp3') }}?v={{ timestamp }}" type="audio/mp3">
+                    Seu navegador não suporta o áudio.
+                </audio>
+            </div>
+            <div class="form-box">
+                <h2>Imagem enviada:</h2>
+                <img src="{{ url_for('uploaded_file', filename='imagem.jpg') }}">
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+</body>
+</html>

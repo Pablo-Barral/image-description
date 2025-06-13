@@ -1,5 +1,5 @@
 Flask
-PyTorch
+torch
 deep-translator
 Pillow
 transformers
